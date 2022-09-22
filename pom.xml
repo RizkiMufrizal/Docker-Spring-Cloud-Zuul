@@ -30,8 +30,8 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -81,5 +81,20 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <activatedProperties>prd</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

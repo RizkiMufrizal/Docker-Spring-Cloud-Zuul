@@ -1,19 +1,25 @@
 package org.rizki.mufrizal.gateway.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ZuulRoute implements Serializable {
+@Entity
+@Table(name = "tb_zuul_route")
+@Getter
+@Setter
+public class ApiRoute implements Serializable {
 
     @Id
     @Column(name = "id", length = 36)
@@ -24,22 +30,19 @@ public class ZuulRoute implements Serializable {
     @Column(name = "path")
     private String path;
 
-    @Column(name = "service_id", length = 100)
-    private String serviceId;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "version")
+    private String version;
 
     @Column(name = "url")
     private String url;
 
     @Column(name = "strip_prefix")
-    private String stripPrefix;
-
-    @Column(name = "retryable")
-    private String retryable;
+    private Boolean stripPrefix;
 
     @Column(name = "enabled")
     private Boolean enabled;
-
-    @Column(name = "sensitive_headers_list")
-    private String sensitiveheadersList;
 
 }
